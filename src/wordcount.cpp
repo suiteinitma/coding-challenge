@@ -16,7 +16,7 @@ typedef std::map<std::string, int> StrIntMap;
 
   int main(int argc, char** argv) {
 //Check input.
-     if (argc < 2)
+     if (argc < 3)
         return -1;
 
      std::ifstream in(argv[1]);
@@ -30,7 +30,7 @@ typedef std::map<std::string, int> StrIntMap;
      countWords(in, w);
 
      std::ofstream myfile;
-     myfile.open("ft1.txt");
+     myfile.open(argv[2]);
      
 // Output the occurence of each word from the map (alphabetically).
      for (StrIntMap::iterator p = w.begin();p != w.end(); ++p) {

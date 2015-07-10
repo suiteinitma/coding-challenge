@@ -23,15 +23,18 @@ int lineWordCount(const std::string& line) {
   int main(int argc, char** argv) {
 
 // Check input.
-     if (argc < 2){
-        std::cout << "No Input! \n";
+     if (argc < 3){
+        std::cout << "Not enough input! \n";
         return -1;
      }
 
      std::ifstream in(argv[1]);
 
-     if (!in)
+     if (!in){
+        std::cout << "Empty File! \n";
         return -1;
+     }
+         
 
      std::string line;
 
@@ -39,7 +42,7 @@ int lineWordCount(const std::string& line) {
      long long int lineCount = 0;
 
      std::ofstream myfile;
-     myfile.open("ft2.txt");
+     myfile.open(argv[2]);
  
 // Fetch one line at a time, count the total number of words and update the average.
      while(getline(in, line)){
@@ -47,6 +50,8 @@ int lineWordCount(const std::string& line) {
         ++lineCount;
         myfile << (float)totalWords/lineCount << "\n" ;
      }
+
+     if(lineCount < 2) std::cout << "wrong \n";
 
      myfile.close();
      return 0;
